@@ -3,8 +3,8 @@
 class Sandbox : public Hazel::Application
 {
 public:
-	Sandbox() {};
-	~Sandbox() {};
+	Sandbox() {}
+	~Sandbox() {}
 
 };
 

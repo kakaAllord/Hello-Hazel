@@ -11,9 +11,10 @@ namespace Hazel {
 		~Application();
 
 		void Run();
+
+	private:
+		bool m_Running = true;
 	};
 		
 	Application* CreateApplication();
 }
-
-
