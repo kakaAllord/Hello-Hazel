@@ -8,15 +8,23 @@ workspace "Hazel"
 		"Dist"
 	}
 
-outputDir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
  
+-- Include directories relative to root folder (solution directory)
+IncludeDir = {}
+
+-- Adding the GLFW dependency
+IncludeDir["GLFW"] = "Hazel/vendor/GLFW/include"
+
+include "Hazel/vendor/GLFW"
+
 project "Hazel"
 	location "Hazel"
 	kind "SharedLib"
 	language "C++"
 
-	targetdir("bin/" .. outputDir .. "/%{prj.name}")
-	objdir("bin-int/" .. outputDir .. "/%{prj.name}")
+	targetdir("bin/" .. outputdir .. "/%{prj.name}")
+	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	pchheader "hzpch.h"
 	pchsource "Hazel/src/hzpch.cpp"
@@ -30,7 +38,14 @@ project "Hazel"
 	includedirs
 	{
 		"%{wks.location}/%{prj.name}/vendor/spdlog/include",
-		"%{wks.location}/%{prj.name}/src"
+		"%{wks.location}/%{prj.name}/src",
+		"%{IncludeDir.GLFW}"
+	}
+
+	links
+	{
+		"GLFW",
+		"opengl32.lib"
 	}
 
 	filter "system:windows"
@@ -51,8 +66,8 @@ project "Hazel"
 	
 		postbuildcommands
 		{
-			'{MKDIR} "%{wks.location}/bin/' .. outputDir .. '/Sandbox"',
-			'{COPY} "%{cfg.buildtarget.abspath}" "%{wks.location}/bin/' .. outputDir .. '/Sandbox"'
+			'{MKDIR} "%{wks.location}/bin/' .. outputdir .. '/Sandbox"',
+			'{COPY} "%{cfg.buildtarget.abspath}" "%{wks.location}/bin/' .. outputdir .. '/Sandbox"'
 		}
 
 
@@ -73,8 +88,8 @@ project "Sandbox"
 	kind "ConsoleApp"
 	language "C++"
 
-	targetdir("bin/" .. outputDir .. "/%{prj.name}")
-	objdir("bin-int/" .. outputDir .. "/%{prj.name}")
+	targetdir("bin/" .. outputdir .. "/%{prj.name}")
+	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
 
 	files
 	{
