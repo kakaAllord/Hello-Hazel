@@ -1,5 +1,9 @@
 #include "Hazel/Window.h"
 
+#include "Hazel/Events/ApplicationEvent.h"
+#include "Hazel/Events/KeyEvent.h"
+#include "Hazel/Events/MouseEvent.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Hazel

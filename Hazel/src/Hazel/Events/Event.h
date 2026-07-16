@@ -9,13 +9,12 @@ namespace Hazel {
 	enum class EventType
 	{
 		None = 0,
-		WindowResize, WindowMoved, WindowFocused, WindowLostFocus, WindowClosed,
+		WindowResize, WindowMoved, WindowFocused, WindowLostFocus, WindowClose,
 		ApplicationTick, ApplicationUpdate, ApplicationRender,
 		KeyPressed, KeyReleased,
 		MouseMoved, MouseScrolled,
 		MouseButtonPressed, MouseButtonReleased,
 	};
-
 
 	enum EventCategory
 	{
@@ -70,7 +69,7 @@ namespace Hazel {
 		{
 			if (m_Event.GetEventType() == T::GetEventStaticType())
 			{
-				m_Event.m_Handled == func(*(T*)&m_Event);
+				m_Event.m_Handled = func(*(T*)&m_Event);
 				return true;
 			}
 			return false;

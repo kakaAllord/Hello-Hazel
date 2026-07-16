@@ -53,6 +53,8 @@ project "Hazel"
 		staticruntime "On"
 		systemversion "latest"
 
+		disablewarnings { "4251" }
+
 		buildoptions
 		{
 			"/utf-8"
@@ -90,6 +92,8 @@ project "Sandbox"
 
 	targetdir("bin/" .. outputdir .. "/%{prj.name}")
 	objdir("bin-int/" .. outputdir .. "/%{prj.name}")
+
+	disablewarnings { "4251" }
 
 	files
 	{

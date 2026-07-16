@@ -7,11 +7,11 @@ namespace Hazel {
 	class HAZEL_API MouseMovedEvent : public Event
 	{
 	public:
-		MouseMovedEvent(int MouseX, int MouseY)
+		MouseMovedEvent(float MouseX, float MouseY)
 			: m_MouseX(MouseX), m_MouseY(MouseY) {}
 
-		inline int GetMouseX() const { return m_MouseX; }
-		inline int GetMouseY() const { return m_MouseY; }
+		inline float GetMouseX() const { return m_MouseX; }
+		inline float GetMouseY() const { return m_MouseY; }
 
 		std::string ToString() const override
 		{
@@ -23,18 +23,18 @@ namespace Hazel {
 		EVENT_CLASS_TYPE(MouseMoved)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 	private:
-		int m_MouseX, m_MouseY;
+		float m_MouseX, m_MouseY;
 	};
 
 	class HAZEL_API MouseScrolledEvent : public Event
 	{
 	public:
-		MouseScrolledEvent(int OffsetX, int OffsetY)
+		MouseScrolledEvent(float OffsetX, float OffsetY)
 			: m_OffsetX(OffsetX), m_OffsetY(OffsetY) {
 		}
 
-		inline int GetMouseX() const { return m_OffsetX; }
-		inline int GetMouseY() const { return m_OffsetY; }
+		inline float GetMouseX() const { return m_OffsetX; }
+		inline float GetMouseY() const { return m_OffsetY; }
 
 		std::string ToString() const override
 		{
@@ -46,7 +46,7 @@ namespace Hazel {
 		EVENT_CLASS_TYPE(MouseScrolled)
 		EVENT_CLASS_CATEGORY(EventCategoryMouse  | EventCategoryInput)
 	private:
-		int m_OffsetX, m_OffsetY;
+		float m_OffsetX, m_OffsetY;
 	};
 
 	class HAZEL_API MouseButtonEvent : public Event
