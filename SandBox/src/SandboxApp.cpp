@@ -14,15 +14,7 @@ public:
 
 	void OnEvent(Hazel::Event& e) override
 	{
-		//HZ_TRACE("{}", e.ToString());
-		std::string str = e.ToString();
-
-		printf("%s\n", str.c_str());
-
-		HZ_TRACE("{}", str);
-		printf("An Event has been received~~\n");
-		HZ_TRACE("{}", e.GetName());
-		HZ_TRACE("Hi");
+		HZ_TRACE("{}", e.ToString());
 	}
 
 };
