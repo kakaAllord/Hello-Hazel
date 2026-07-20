@@ -11,6 +11,10 @@ namespace Hazel
 {
 	static bool s_GLFWInitialized = false;
 
+	WindowsWindow* WindowsWindow::s_Instance = nullptr;
+
+	WindowsWindow* s_Instance = nullptr;
+
 	static void GLFWErrorCallback(int error_code, const char* description)
 	{
 		HZ_CORE_ERROR("GLFW Error ({0}): {1}", error_code, description);
@@ -23,6 +27,8 @@ namespace Hazel
 
 	WindowsWindow::WindowsWindow(const WindowProps& props)
 	{
+		HZ_CORE_ASSERT(!s_Instance, "Windows window already exists!!");
+		s_Instance = this;
 		Init(props);
 	}
 

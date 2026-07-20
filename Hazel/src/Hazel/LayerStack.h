@@ -15,8 +15,8 @@ namespace Hazel
 
 		void PushLayer(Layer* layer);
 		void PopLayer(Layer* layer);
-		void PushOverlay(Layer* layer);
-		void PopOverlay(Layer* layer);
+		void PushOverlay(Layer* overlay);
+		void PopOverlay(Layer* overlay);
 
 
 		std::vector<Layer*>::iterator begin() { return m_Layers.begin(); }

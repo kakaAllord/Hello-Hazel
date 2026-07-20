@@ -14,6 +14,9 @@ namespace Hazel
 		WindowsWindow(const WindowProps& props);
 		~WindowsWindow() override;
 
+		static WindowsWindow* Get() { return s_Instance;  }
+		GLFWwindow* GetWindow() { return m_Window; }
+
 		virtual void OnUpdate();
 
 		virtual unsigned int GetWidth() const override { return m_Data.Width; }
@@ -28,6 +31,7 @@ namespace Hazel
 		void Shutdown();
 
 	private:
+		static WindowsWindow* s_Instance;
 		GLFWwindow* m_Window;
 
 		struct WindowData

@@ -19,6 +19,7 @@ namespace Hazel
 	{
 		m_OverlayBegin = m_Layers.emplace(m_OverlayBegin, layer);
 		++m_OverlayBegin;
+		layer->OnAttach();
 	}
 
 	void LayerStack::PopLayer(Layer* layer)
@@ -35,15 +36,17 @@ namespace Hazel
 		}
 	}
 
-	void LayerStack::PushOverlay(Layer* layer)
+	void LayerStack::PushOverlay(Layer* overlay)
 	{
-		m_Layers.emplace_back(layer);
+		m_Layers.emplace_back(overlay);
+		overlay->OnAttach();
+
 	}
 
-	void LayerStack::PopOverlay(Layer* layer)
+	void LayerStack::PopOverlay(Layer* overlay)
 	{
 
-		auto it = std::find(m_OverlayBegin, m_Layers.end(), layer);
+		auto it = std::find(m_OverlayBegin, m_Layers.end(), overlay);
 		if (it != m_Layers.end())
 			m_Layers.erase(it);
 	}
