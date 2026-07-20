@@ -4,6 +4,7 @@
 #include "Hazel/Core.h"
 #include "Hazel/Log.h"
 
+#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 namespace Hazel
@@ -67,6 +68,8 @@ namespace Hazel
 
 		m_Window = glfwCreateWindow((int)props.Width, (int)props.Height, props.Title.c_str(), nullptr, nullptr);
 		glfwMakeContextCurrent(m_Window);
+		int success = gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
+		HZ_CORE_ASSERT(success, "Failed to initialise Glad!");
 		glfwSetWindowUserPointer(m_Window, &m_Data);
 		SetVSync(true);
 

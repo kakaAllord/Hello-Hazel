@@ -4,7 +4,7 @@
 #include "Hazel/Events/KeyEvent.h"
 #include "Hazel/Events/MouseEvent.h"
 
-#include <GLFW/glfw3.h>
+struct GLFWwindow;
 
 namespace Hazel
 {
