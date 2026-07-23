@@ -43,7 +43,8 @@
 //  2025-03-10: Map GLFW_KEY_WORLD_1 and GLFW_KEY_WORLD_2 into ImGuiKey_Oem102.
 //  2025-03-03: Fixed clipboard handler assertion when using GLFW <= 3.2.1 compiled with asserts enabled.
 //  2024-08-22: Moved some OS/backend related function pointers from ImGuiIO to ImGuiPlatformIO:
-//               - io.GetClipboardTextFn    -> platform_io.Platform_GetClipboardTextFn
+//               - io.GetClipboardTextFn    -> platform_
+// Platform_GetClipboardTextFn
 //               - io.SetClipboardTextFn    -> platform_io.Platform_SetClipboardTextFn
 //               - io.PlatformOpenInShellFn -> platform_io.Platform_OpenInShellFn
 //  2024-07-31: Added ImGui_ImplGlfw_Sleep() helper function for usage by our examples app, since GLFW doesn't provide one.
