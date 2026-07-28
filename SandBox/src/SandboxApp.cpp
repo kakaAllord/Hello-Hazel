@@ -9,7 +9,7 @@ public:
 
 	void OnUpdate() override
 	{
-		HZ_INFO("ExampleLayer::OnUpdate() Called");
+		HZ_INFO("{}", Hazel::Input::GetMousePosition().first);
 	}
 
 	void OnEvent(Hazel::Event& e) override
